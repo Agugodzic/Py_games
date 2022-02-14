@@ -115,7 +115,7 @@ class casilla:
         self.estado = 'vacio'
         self.boton.config(text='', bg = colorCasilla)
         self.contenido = ''
-        jugador = Jugador1
+        jugador = Jugador2
         simbol = ''
         cambiar_a_O()
         finalizarRonda = 'no'
@@ -309,7 +309,7 @@ def _continuar_():
     global casillasVacias
     global listaCasillasVacias
     listaCasillasVacias = [casilla1,casilla2,casilla3,casilla4,casilla5,casilla6,casilla7,casilla8,casilla9]
-    tituloJuego.config(text=f"Es el turno de {jugador.name()}" , bg = colorTitulo)
+    tituloJuego.config(text=f"Es el turno de {Jugador1.name()}" , bg = colorTitulo)
     vaciarCasillas.pack_forget()
     casillasVacias = 9
 
