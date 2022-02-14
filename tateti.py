@@ -105,6 +105,8 @@ class casilla:
         tituloJuego.config(text=f"Es el turno de {jugador.name()}")
         _finalizarRonda_()
 
+        print('Turno de: ',jugador.name(),'\n\n')
+
     def reiniciar(self): #vacia las celdas
         global finalizarRonda
         global jugador
@@ -113,7 +115,7 @@ class casilla:
         self.estado = 'vacio'
         self.boton.config(text='', bg = colorCasilla)
         self.contenido = ''
-        jugador = Jugador1
+        jugador = Jugador2
         simbol = ''
         cambiar_a_O()
         finalizarRonda = 'no'
@@ -169,6 +171,7 @@ def _finalizarRonda_():
     if Jugador1.puntos == 3 or Jugador2.puntos == 3:
         Continuar.pack_forget()
         tituloJuego.config(text=f"{ultimoJugador} ha ganado la partida!",bg='#FFB344',fg = 'black')
+        print('jugador: ', jugador.name() ,'\nganador: ' , ultimoJugador)
         reiniciarJuego.pack()
     
 def evaluar_resultado():
@@ -193,7 +196,7 @@ def evaluar_resultado():
         if casillasVacias == 0:
             vaciarCasillas.pack()
         
-        print(casillasVacias)
+        print('casillas vacias: ' ,casillasVacias)
              
     revisarCasillas('X',casilla1,casilla2,casilla3)
     revisarCasillas('X',casilla4,casilla5,casilla6)
@@ -258,14 +261,14 @@ def pantallaDeInicio(pantallaInicio):
         textoNombrarUsuario.config(text = 'Jugador 2:')
         Jugador1.nombre = entrada.get()
         entrada.delete(0,"end")
-        print('Jugador 1: ' , Jugador1.nombre)
+        print('\nJugador 1: ' , Jugador1.nombre)
 
     def Boton2():
         boton.config(command = lambda: Boton1())
         textoNombrarUsuario.config(text = 'Jugador 1:')
         Jugador2.nombre = entrada.get()
         entrada.delete(0,"end")
-        print('Jugador 2: ' , Jugador2.nombre)
+        print('Jugador 2: ' , Jugador2.nombre,'\n')
         pantallaDeJuego()
 
     nombrarJugador1.pack(pady = 100 , ipady = 9)
@@ -306,7 +309,7 @@ def _continuar_():
     global casillasVacias
     global listaCasillasVacias
     listaCasillasVacias = [casilla1,casilla2,casilla3,casilla4,casilla5,casilla6,casilla7,casilla8,casilla9]
-    tituloJuego.config(text=f"Es el turno de {jugador.name()}" , bg = colorTitulo)
+    tituloJuego.config(text=f"Es el turno de {Jugador1.name()}" , bg = colorTitulo)
     vaciarCasillas.pack_forget()
     casillasVacias = 9
 
